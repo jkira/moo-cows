@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!-- saved from url=(0045)http://www.moo.mud.org/moo-faq/moo-faq-2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ <meta name="GENERATOR" content="LinuxDoc-Tools 0.9.21">
+ <title>MOO-Cows FAQ: Database and Programming</title>
+ <link href="http://www.moo.mud.org/moo-faq/moo-faq-3.html" rel="next">
+ <link href="http://www.moo.mud.org/moo-faq/moo-faq-1.html" rel="previous">
+ <link href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2" rel="contents">
+</head>
+<body data-pinterest-extension-installed="cr2.0.5">
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-3.html">Next</a>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-1.html">Previous</a>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2">Contents</a>
+<hr>
+<h2><a name="s2">2.</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2">Database and Programming</a></h2>
+
+<h2><a name="ss2.1">2.1</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2.1">Where can I get the Programmer's Manual?</a>
+</h2>
+
+<p>The LambdaMOO Programmer's Manual is a complete reference for all
+database-independent aspects of the LambdaMOO system, including the
+programming language, built-in functions, and command parser.</p>
+
+<p>The 
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/html/ProgrammersManual_toc.html">Programmer"s Manual</a>
+is available at 
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO">ftp://ftp.research.att.com/dist/eostrom/MOO</a>
+The file name is `ProgrammersManual.*' where `*' is the format tag.  It is
+available in
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/ProgrammersManual.dvi.Z">DVI</a>,
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/ProgrammersManual.ps.Z">PostScript</a>,
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/ProgrammersManual.texinfo">TeXInfo</a>, and
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/ProgrammersManual.txt">plain text</a> 
+formats.</p>
+
+<h2><a name="ss2.2">2.2</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2.2">Is there a way to incorporate new features of LambdaCore into my MOO's DB?</a>
+</h2>
+
+<p>There is no easy way to merge databases. The easiest thing to do is
+just snag the code from LambdaMOO or somewhere and build/rebuild
+the objects by hand. (For information on how to do so, see `help @dump'
+on LambdaMOO.)</p>
+
+<h2><a name="ss2.3">2.3</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2.3">Objects like $room and $player are part of the `core' of the MOO. How do I add new ones?</a>
+</h2>
+
+<p>As documented in the Programmer's Manual
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/html/ProgrammersManual_24.html#SEC24">Getting and Setting the Values of Properties</a>,
+$name refers to the property on the system object (#0) named
+"name".</p>
+<p>Therefore, object references such as `$player' are created by
+adding a property of that name to the system object (#0) and
+storing the appropriate object's number in that property. For
+example, referencing $room is the same as referencing
+#0.room.</p>
+<p>When the verb <code>@make-core-database</code> is run, it searches the
+system object for these links in order to determine which objects
+belong in the core. Newer releases of the LambdaMOO core include
+the wizard verb <code>@corify</code> which will add the specified object to
+the core in the manner illustrated  as well as checking additional
+features such as an `init_for_core' verb being programmed on the
+object.</p>
+
+
+<h2><a name="ss2.4">2.4</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2.4">$spell is HUGE.  How can I recycle it without running out of ticks or seconds?</a>
+</h2>
+
+<p>Mr. Spell is so large that he can't be deleted in the conventional manner. What you need to do is this:
+</p><pre>   ;recycle($spell)
+   @rmprop #0.spell
+</pre>
+<p></p>
+
+<p>This leaves a hole in the database however. You can easily live with it
+but if you find that you can't, just fill it by doing this:</p>
+<p>
+</p><pre>  ;$recycler:_recycle(renumber(create(#1)));
+  ;reset_max_object()
+</pre>
+<p></p>
+
+<p>Another option is to call $spell:clearall() and recycle the object
+as usual.  This takes longer, but it does leave you the option of
+using $spell later, or with a smaller dictionary (by not recycling
+it).  $spell without the dictionary is not very big.  </p>
+
+<h2><a name="ss2.5">2.5</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2.5">How do I do execute a verb automatically each time the server starts?</a>
+</h2>
+
+<p>When the server starts, it calls the verb #0:server_started.
+Create or alter that verb to have it call the verb you want to execute.</p>
+<p>If a task has suspended or forked, and its execution is still pending
+when the server checkpoints or is shutdown, that task is saved along
+with the rest of the database. Thus, when the server is restarted,
+that task will be resumed.</p>
+
+<h2><a name="ss2.6">2.6</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2.6">How can I make an object in a room listen to everything that's being said?</a>
+</h2>
+
+<p>When something is said in a room, each object in that room is sent
+that text via the verb <code>tell</code>. You can change this verb to do whatever
+you want it to whenever anything is said or done in a room.</p>
+
+<h2><a name="ss2.7">2.7</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2.7">My MOO checkpoints every hour. I want to change this but I don't know where to look.</a>
+</h2>
+
+<p>Change the value of the property <code>#0.dump_interval</code> to the desired
+number of seconds between dumps; the change will take effect after the
+next checkpoint.</p>
+<p>This is documented in the LambdaMOO Programmer's Manual,
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/html/ProgrammersManual_65.html#SEC65">Checkpointing the Database</a>.</p>
+
+<hr>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-3.html">Next</a>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-1.html">Previous</a>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc2">Contents</a>
+
+
+</body><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style></html>

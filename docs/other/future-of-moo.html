@@ -1,0 +1,194 @@
+<HTML>
+<TITLE>One idea about the future of MOO</TITLE>
+<PRE>
+To: MOO-Cows@parc.xerox.com
+Subject: Re: MOO's future
+In-reply-to: Gustavo Glusman's message of "Thu, 02 Feb 95 01:31:01 PST"
+Date: Thu, 2 Feb 1995 12:47:45 PST
+Sender: Pavel Curtis <pavel@parc.xerox.com>
+From: Pavel Curtis <pavel@parc.xerox.com>
+
+This is a reply to a message sent to me in private email by Gustavo Glusman; I
+do not think he would object to my answering his questions publicly.
+
+> >various times in various ways.  I do *not* propose to try to fix the MOO's
+> >broken notions in this area (or, indeed, in any of several other areas);
+> >rather, I see the MOO as having a relatively near end-of-life horizon,
+> >measured in the 2-3 year range, and I'd rather put my efforts into creating
+> >its successor than in trying to do deep patches to its heavily flawed basis.
+> 
+> What are the most important flaws in your opinion? Why can't they be
+> straightened out?
+
+Here are some of the biggest problems with the MOO as a basis for future work:
+
+Scalability: The MOO's single-server orientation, with the fundamental
+assumption that all of the state of the whole world is immediately accessible
+and under central control, is a major impediment to future work.  For example,
+it is unclear that one can put together a useful Jupiter server on this basis
+that serves even all of PARC (~350 full-time users), let alone all of the Xerox
+Corporation, all of the active astronomical research community, etc.
+
+Concurrency: The MOO's *deep* reliance, at both the server-code and DB-code
+levels, on single-threaded atomic execution effectively prevents both a
+coherent notion of distributed service (since distribution strongly implies
+concurrency) and even single-server scalability through the use of a
+multiprocessor machine.
+
+Security: The MOO's current access-control mechanisms are very rigid and quite
+inconvenient for, I would claim, the vast majority of real applications.  Not
+only are we stuck with the simplistic r/w-bit model of the UNIX file system,
+but we don't even have the important `group' level of control; it's all owner
+or world permissions, far too coarse a granularity.  What's required for a
+large number of applications is very fine-grained control over access, such as
+would be provided by a `capability-based' operating system.  In such systems,
+access to a resource is available only to those entities who have explicitly
+received an unforgeable `handle' on the resource.  You can think of such a
+handle as being like a MOO object reference, except that there's no way to
+`create' the handle from whole cloth; it must be given to you (e.g. as an
+argument or result of a function call) by an entity that already has it.
+
+Other major security problems in the MOO are the uncontrollable public-ness of
+many object relationships, such as the location/contents and parent/children
+hierarchies, and the severe accountability problems with the current
+ticks_left()/seconds_left() and queued_tasks()/kill_task() models.
+
+Access to outside resources: The MOO was designed, from the beginning, to
+effectively and completely prevent access by DB code to the various resources
+in the host system, such as its files, system calls, devices, etc.  Because of
+the severely restricted security models mentioned above, there isn't any
+reasonable way to provide such complete access now.
+
+There are a great host of other substantial flaws, but I don't want to take the
+time right now to go into them in detail; suffice to say that they are so
+numerous, deep, and significant that MOO can only be used for a certain
+approximate level of prototyping for the kinds of systems and applications I'm
+interested in building.
+
+> How does this influence the MOO's development (i.e. new versions etc)?
+
+I fully intend to make a number of substantial incremental improvements to MOO
+over the next year or so, probably covering the vast majority of what I listed
+in my infamous `1.8.X feature list' and still quite possibly including the
+long-promised disk-basing facility.  My major motivations for continuing this
+line of development are (1) meeting the near-term needs of the Jupiter project,
+to allow us to get all of the research benefit out of that system prototype
+that appears within easy reach, and (2) making good on the most important of
+the explicit commitments I've made to the MOO user community over the years.
+My motivations do *not* include trying to make MOO the best MUD server in
+existence; I now believe that MUDs, as currently understood at large, are
+nearing their end of useful life, and trying to make the best of a dying breed
+is not very appealing to me.
+
+> What do you have in mind for 'its successor'? Is it something you're
+> working on, planning?
+
+Yes.  We have for some time been planning a new project here at PARC to design,
+build, and freely release a system we call the Fabric, a fully distributed,
+robust, secure, and powerful computational and communications substrate.  The
+Fabric will be designed and implemented specifically to support a single,
+Internet-spanning social virtual reality; you wouldn't be far off to think of
+the Fabric as being the SVR equivalent of the Web, with literally many millions
+of independent servers loosely cooperating to create the illusion of a vast,
+seamless virtual space that eventually encompasses the whole of the Internet
+and all of its available information and service resources.
+
+For a set of stories we've written about what we think it will be like for
+normal people to use the Fabric, take a look at
+        ftp://ftp.parc.xerox.com/pub/MOO/papers/NII-Scenarios.txt
+which is an article we wrote for a recent issue of the newsletter of Computer
+Professionals for Social Responsibility.
+
+We anticipate beginning serious work on the Fabric in March, after finishing
+the technical work for the Jupiter release to the net.  I'm guesstimating a
+full-scale public release for the Fabric during the winter of 1996-7.
+
+> The reason I ask is that (as you know) we put quite a load of work on MOO
+> use and development. If the project will get stalled at some point, then
+> we'd better put less work on it and seek alternatives?
+
+<A NAME="praise">My</A> advice is that you at least mostly continue as you have been, since you have
+a large investment in your current work and the amount of improvement you could
+hope for on any other available platform seems relatively limited in comparison
+to the amount of work required to shift.  The one possible exception to this,
+in my opinion, is Rob Leslie's LPMOO server, assuming that it can provide
+sufficiently good performance; I single out this possible option because it
+provides a very easy transition path to a system that can be extended in
+interesting ways more easily than can the LambdaMOO server.  His code is still
+relatively untested in a production environment, though, especially in the
+context of a large database and user community; I would not consider using it
+at LambdaMOO, for example, until after a number of medium-sized systems had had
+some success with it.  This is not a criticism of Rob's work, by the way, which
+I have reason to believe is exemplary; every system encounters new challenges
+as it is used under more demanding circumstances.
+
+> On the other hand, if you're now planning/developing a new generation, we
+> are willing to help develop it.
+
+Thanks for the offer; so far, we haven't been able to figure out a plausible
+and efficient way to share the actual development effort, but we will be
+needing substantial assistance in about a year, when we begin the first
+small-scale but large-dispersion tests of the Fabric; I expect to be contacting
+a number of my MOO acquaintances from all over the world when the time comes...
+
+> Quoting:
+>      The major version number changes very slowly, only when existing MOO
+>      code might stop working, due to an incompatible change in the syntax or
+>      semantics of the programming language, or when an incompatible change is
+>      made to the database format.
+
+I have long regretted those words, from `version.h' in the release; indeed, I
+broke this promise in the very first release after these words were written, as
+you can see from comments near the top of `ChangeLog.txt'.
+
+> Couldn't a new, highly improved server be developed, with enough
+> compatibility with MOO 1.x.y to be able to load such a database (probably
+> with many modifications prior to conversion), which would start the new MOO
+> 2.x.y line?
+
+Conceivably, but our plans for the Fabric are so ambitious, and so much
+potential is at stake, that I feel extremely uncomfortable with the idea that
+backward compatibility with MOO might be a design requirement.  If we are at
+all successful, the amount of MOO code in the world at this moment will be but
+a tiny speck in comparison to what will be written in Fable, the Fabric's
+programming language.  As I pointed out above, the MOO programming model is
+terribly flawed when seen in the light of the Fabric project's goals; catering
+to it now could easily cripple the project from the outset.
+
+> The idea of dumping most of the current work on the existing MOOs isn't
+> attractive. But, after all, it's based on lack of knowledge of what the
+> plans are.
+
+While I do not expect that automatic conversion from MOO to the Fabric will be
+possible, I do think that it should be relatively straightforward for folks to
+recreate much of their work in the new context, and that the level of new
+benefits to be gained by doing so will justify such an effort.  Moreover, I
+think that the work that's being done on BioMOO, JHM, MediaMOO, Astro-VR,
+Jupiter and other systems, on understanding more and more about just what
+people need from such an infrastructure and how to use it to help them do what
+they want to do, is and will continue to be very important.  People are, I
+think, learing important truths that transcend the specific underlying
+technology and that will not only migrate to new infrastructures, but also help
+to better inform the fundamental design of those new infrastructures; indeed,
+there are countless ways in which our thinking about the Fabric has been
+influenced in very basic ways by our collective experience with MUDs.
+
+The upshot is that I encourage you to continue along this path you're all
+walking right now; the research and (partially self-) education you're doing
+will have value for many years to come.
+
+> Back to shorter term issues, I'd like to ask what your plans are for
+> implementing floating-point maths in the MOO, which I understand should be
+> in 1.8.x.
+
+I intend to add double-precision floating-point numbers as a new fundamental
+MOO datatype, alongside the current integers, strings, lists, object
+references, and error codes.  The plan is to more-or-less duplicate the level
+of support described in the ANSI C standard within MOO, including
+flexible string<-->number conversions and transcendental functions.  At least
+currently, that's the full extent and limit of my plans.
+
+        Pavel
+
+</PRE>
+</HTML>

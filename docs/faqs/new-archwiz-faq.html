@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML VERSION="2.0">
+<HEAD>
+<TITLE>Newbie Wizards FAQ </TITLE>
+</HEAD>
+<BODY>
+<H1><A NAME="top">Newbie</A> Wizards FAQ</H1>
+<H3>Contents:</H3>
+<UL>
+    <LI><A HREF="#Intro">Intro</A> 
+    <LI>So, how much do I have to <A HREF="#know">know about MOO</A> programming to run my own MOO?
+    <LI>I just got my MOO server going, <A HREF="#got">now what</A>?
+    <LI><A HREF="#HowdoI">How do I ...?</A> 
+    <LI>How do I <A HREF="#restrict">restrict creation of new characters</A> to the @make-player command 
+    <LI>How do I edit my <A HREF="#welcome">welcome screen?</A> 
+    <li>How do I edit the <a href="#defhelp">default `help' message</a>?
+    <li>How do I write <a href="#newhelp">new help</a>?
+    <LI>Why does <A HREF="#mail">mail to the internet fail</A> when I create a character? 
+    <LI>What's the deal with <A HREF="#@make-player">@make-player?</A> If you try to add alias arguments, they just concatenate into a long player
+    name with no aliases 
+    <LI>What's the deal with @make-player? <A HREF="#helpmake-player">There's no help</A>
+    <LI>OK, I need some help here. How do I make a <A HREF="#playertowizard">trusted player into a wizard?</A> 
+    <LI>How come <A HREF="#nooneconnectedasguest">no one can connect as guest?</A> 
+    <LI>What should the new ArchWiz understand about <A HREF="#permissions/security">permissions/security?</A> 
+    <LI>No player's <A HREF="#disconnect">disconnect date</A> is getting modified, what's up? 
+    <LI>LambdaCore is awfully bare. How can I <A HREF="#LambdaCorebare">get some other objects and system features</A> into my MOO without recoding them from scratch? 
+    <LI><A HREF="#dumped">I dumped this object</A>, but it has a few hundred properties containing object numbers from objects
+    and players on the source MOO. How can I get rid of these? 
+    <LI>My client totally hashes my <A HREF="#hashes">@dump script</A> when I upload it, putting in linebreaks where it shouldn't. What do I do? 
+    <LI>How can I make all <A HREF="#playerschildren">new players children of a specific player class?</A> 
+    <LI>Why do I get a r<A HREF="#rangeerror">ange error</A> on line 3 of #15:length_date_gt, which is used by commands such as @subscribe? 
+    <LI>I've been trying to get @mail-options +netmail to work on my moo and I always get this: <A HREF="#@mail-options">Mail sending failed</A>: 503 Need MAIL before RCPT. I then get both an emailed and @mail copy of
+    the msg. What's up? 
+    <LI>Whats up with this <A HREF="#my_huh">my_huh: security hole?</A> 
+    <LI>Hey! <A HREF="#new">There is always new news.</A> What's going on? 
+    <LI>Hey! Where's the <A HREF="#help$news">help on $news?</A> I've @examined it, but nothing works 
+    <LI><A HREF="#epilog">Epilog</A> 
+</UL>
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P><A NAME="Intro">This</A> FAQ list is designed to help new MOO arch-wizards (MOO owners) get answers to their questions. Entries come from items on the moo-cows mail list, personal questions from experience on our MOO, and from your contributions. The questions on this list most directly pertain to the core database, LambdaCore; to the extent that the core db you start with differs from LambdaCore, answers to these questions may vary from what is presented here. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P><A NAME="know">So, how much do I have to know about MOO programming to run my own MOO?</A> </P>
+<P>Some people might answer this way: If you're not a programmer with plenty
+of experience on MOO, creating your own objects and helping others fix theirs,
+you really should hire, bribe, or marry such a person before you throw up
+a MOO. You'll need this person as an ongoing partner. Many things just don't
+have any documentation beyond their MOO code. There isn't much chance of
+getting all the help you need from any mailing list. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P><A NAME="got">I just got my MOO server going, now what?</A> </P>
+<P>Telnet to the server on the port you started it on (You did read the included documentation on starting the server, yes? You did use the included restart script, yes?). </P>
+<P>Now you should see: </P>
+<ul><code>
+    Trying...<br>
+    Connected to SERVER<br>
+    Escape character is '^]'.<br>
+    Welcome to the LambdaCore database.<br>
+<br>
+    Type 'connect wizard' to log in.<br>
+<br>
+    You will probably want to change this text, which is stored in<br>
+    $login.welcome_message.<br>
+</code></ul>
+<P>So you'll type &quot;connect wizard&quot; and you'll see: </P>
+<ul><code>
+    *** Connected ***<br>
+    The First Room<br>
+    This is all there is right now.<br>
+    You see a newspaper here.<br>
+</code></ul>
+<P>At this point you can do almost anything. You'll first want to set the wizard's password (help <code>@password</code>). Then you can type </P>
+
+<ul><code>
+    @display $login.<br>
+    help $login<br>
+</code></ul>
+
+<P>to see other properties that you might want to set immediately. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P><A NAME="HowdoI">How do I ... ?</A> </P>
+<P>Wait! Did you 'read the manual'? The following are very useful: </P>
+<ul><code>
+help wiz-index<br>
+&nbsp;&nbsp;&nbsp;[contains all of the currently existing wizard-help topics] <br>
+help core-index <br>
+&nbsp;&nbsp;&nbsp;[contains all of the currently existing help topics about various core objects] <br>
+help $login <br>
+&nbsp;&nbsp;&nbsp;[will tell you about welcome messages, blacklists, redlists, enabling automatic player creation (allowing logins to create players immediately, see next)] <br>
+</code></ul>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>How do I <A NAME="restrict">restrict creation</A> of new characters to the @make-player command (ie. prevent create &lt;playername&gt; &lt;password&gt; from the login screen?). </P>
+
+<ul><code>
+   @set $login.create_enabled to 0 
+</code></ul>
+
+<P>This stops people from creating their own characters at the welcome message. If you have a network active, the default seems to be that people can still login as guest and create their own character with <code>@request</code>. We hacked the <code>@request</code> verb to change this, but that may not be the easiest of best solution. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>How do I edit my <A NAME="welcome">welcome screen</A>? </P>
+<P>You can set the welcome message with something like: </P>
+<ul><code>
+   @set $login.welcome_message to {&quot;Welcome to...&quot;, &quot;&quot;, &quot;...&quot;} 
+</code></ul>
+<P>or </P>
+<ul><code>
+    @notedit $login.welcome_message 
+</code></ul>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<p>How do I edit the <a name="defhelp">default `help' message</a>?</p>
+
+<ul><code>@notedit $help.summary</code></ul>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+
+<p>How do I write <a name="newhelp">new help</a>?</p>
+
+<p>Add a new property to a help database (such as $help). For example,
+if you want to add a new help topic called `fnords', you'd do:</p>
+<ul><code>
+@prop $help.fnords {}<br>
+@notedit $help.fnords
+</code></ul>
+<p>
+Then type the help text you want for that topic into the note editor,
+and save it.
+</p><p>
+You may prefer to create a new help database just for your database's
+help topics. If so, you should first create a new child of the Generic
+Help Database ($generic_help), then add properties to that. You also
+need to add your new help database's object number to the .help list on
+the generic player.</p>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+
+
+<P>Why does <A NAME="mail">mail to the internet fail</A> when I create a character? </P>
+<P>Make sure you compiled the MOO server with &quot;outgoing network connections&quot; enabled (in the options.h file); you may also have to: </P>
+<ul><code>
+    @set $network.active to 1 
+</code></ul>
+<P>The network is necessary so the server can automatically e-mail the new user with their character name and password. You should also set the properties on $network correctly for your MOO. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>What's the deal with <code><A NAME="@make-player">@make-player</code></A>? If you try to add alias arguments, they just concatenate into a long player name with no aliases. </P>
+<P>*The aliases argument seems to be broken in the 1-Oct-94 core. Add aliases later. Aliases work with this command in the previous version. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P><A NAME="helpmake-player">What's the deal with <code>@make-player</code>? There's no help</A>. </P>
+<P>[The following help is from the help database on LambdaMOO, and is out in the current core, but you don't have that or you wouldn't ask, eh? ] </P>
+<ul><code>
+    &gt;help @make-player<br>
+    @make-player name[,aliases] [email-address [commentary]]<br>
+</code></ul>
+<UL>
+    <LI>Creates a player. 
+    <LI>Generates a random password for the player. 
+    <LI>Email-address is stored in <code>$registration_db</code> and on the player object. 
+    <LI>Comments should be enclosed in quotes. 
+</UL>
+
+<P>Example:</P>
+<ul><code>
+    @make-player George sanford@frobozz.com &quot;George shares email with Fred Sanford (Fred #5461)&quot; 
+</code></ul>
+<P>If the email address is already in use, prompts for confirmation. (Say no, this is a bug: it will break if you say yes.) If you say no at one of the confirming prompts, character is not made. </P>
+<P>If network is enabled (via <code>$network.active</code>) then asks if you want to mail the password to the user after character is made. </P>
+<P>[From Judy Anderson, who wrote the help for this on Lambda] </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>OK, I need some help here. <A NAME="playertowizard">How do I make a trusted player into a wizard</A>? </P>
+<P>Don't. Instead, create a fresh player <code>#p</code> and do </P>
+<ul><code>
+    @chparent #p to $wiz<br>
+    @programmer #p<br>
+    ;#p.wizard=1<br>
+</code></ul>
+<P>and then tell your helper the password to the new player. Alex Stewart notes that adding the <code>@programmer</code> call avoids certain sticky situations that might be encountered by non-programmer wizards. </P>
+<P>The reason you really only want to do this with a freshly created player is that every verb owned by the player will suddenly acquire wizard permissions. For an existing player, you'd need to go through and make sure that player in question owns no verbs that will do any damage if given wizard permissions (remember, anyone may call any verb...). [from Roger Crew] </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>How come <A NAME="nooneconnectedasguest">no one can connect as guest</A>? </P>
+<P>Do </P>
+<ul><code>
+     @make-guest &lt;guestname&gt;<br>
+</code></ul>
+<P>then edit the description. Only ONE of the guest characters must be named
+or aliased as 'guest' for guest connections to work. Try this: </P>
+<ul><code>
+     @add-alias guest to &lt;object# of first guest you made&gt;<br>
+</code></ul>
+<P>Repeat @make-guest &lt;guestname&gt;, adding descriptions as you go, until you have a number of guests equal to your desired maximum number of guest connections. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>What should the new ArchWiz understand about <A NAME="permissions/security">permissions/security</A>? </P>
+<P>A lot. Here's some code you could put into a verb to help you find writeable verbs that act with wizards authority (i.e. a verb anyone could modify, that has the power of a wizard): </P>
+<ul><code>
+<br>
+(perhaps call it: &quot;@seek*holes findholes&quot;   none none none)<br>
+<pre>
+count = 0;
+wiz = &quot;&quot;;
+evil = &quot; contains WWV&quot;;
+for object in [1..tonum(max_object())]
+  $command_utils:suspend_if_needed(0, tostr(object, &quot;...&quot;));
+  object = toobj(object);
+  if (valid(object) &amp;&amp; length(vrbs = verbs(object)) != 0)
+    for n in [1..length(vrbs)]
+      $command_utils:suspend_if_needed(0, tostr(object, &quot;...&quot;));
+      if (index(verb_info(object, tostr(n - 1))[2], &quot;w&quot;) &gt; 0)
+        count = count + 1;
+        if (verb_info(object, tostr(n - 1))[1].wizard == 1)
+          wiz = &quot;WIZARDLY &quot;;
+        else
+          wiz = &quot;&quot;;
+        endif
+        player:tell(wiz, &quot;Object &quot;, tostr(object), evil, &quot; &quot;, vrbs[n]);
+      endif
+    endfor
+  endif
+endfor
+player:tell(count, &quot; total.&quot;);
+</pre>
+<br>
+</code></ul>
+<P>[contributed by <code>MudOp@ripco.com</code>, and modified by Scott Lynch] </P>
+<P>Until you really grok permissions, it may be best to do all your programming as a programmer character. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>No player's <A NAME="disconnect">disconnect date</A> is getting modified, what's up? <BR>
+No one is getting mail notification, what's wrong? </P>
+<P>There seems to be a problem with the verb disfunc and confunc verbs on #6, generic player on the distribution of LambdaCore-21Oct93.db. To fix it, <code>@edit #6:disfunc</code> and also <code>#6.confunc</code>, and change each line 1 to this: </P>
+<ul><code>
+    if (valid(caller_perms()) &amp;&amp; caller != this &amp;&amp; caller != #0)<br>
+</code></ul>
+<P>Of course, this only works for sure if you're using the above db version, and haven't touched your disfunc and confunc verbs on this object. Be careful. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P><A NAME="LambdaCorebare">LambdaCore is awfully bare</A>. How can I get some other objects and system features into my MOO without recoding them from scratch? </P>
+<P>[Hmm. Well in the sense that you don't get some system features (weather, rpg system, diurnal environment, etc.) or objects (talking robots, morphing player class, etc.) that you've seen on established MOOs I guess LambdaCore could be called bare. LambdaCore is really a pretty complete base for coding a MOO, with LOTS of underlying necessities that some would be bored and frustrated to tears to have to code themselves. As more daughters of the LambdaCore appear I'll list them here. OK, enough editorial on with
+the question. ed.] </P>
+<P>The recommended procedure for porting objects presently has two components: social and technical. </P>
+<UL>
+<LI>Social: There are copyright &amp; courtesy issues involved with porting other people's code to your MOO. The practical advice that results from these considerations seems to be: 
+<UL>
+<LI>If the object/code explicitly states you can copy it, or you have secured the author's permission, port it.
+<LI>If not, don't port it. 
+<P>This can be a bit frustrating if you want object xyz but xyz's author hasn't logged on in 8 months. The suggestion at that point is to look at the code and try to understand what is being done, then program an object with similar but improved functions. </P>
+<P>Many people say porting MOO objects is a good way to learn MOO programming; others are hostile toward the idea of non-programmers porting objects at all. Let the reader decide, but understand that not everyone thinks porting is a great thing, even when you are courteous, and respect copyright. </P>
+</UL>
+<LI>Technical: Currently there are lots of gotchas to porting objects, most
+of them related to coding irregularities on the original objects, and to MOO client operations. Only a couple of those are dealt with here; until someone develops a robust portability system for MOO, you <EM>will</EM> run into problems from time to time. When that happens, there is nothing like being, or being good friends with, an accomplished MOO programmer. Here is one recommended procedure: 
+</UL>
+
+<OL>
+<LI>On the MOO you're porting the object to, <code>@create</code> using the apropriate parent, and note down the new object number (<code>#xxxx</code>). 
+<LI>Turn on recording and turn off autowrap on your client; you do this to record dump your about to do on the source moo. 
+<LI>On the MOO you're porting object <code>#nnnn</code> from: 
+<OL>
+<LI><code>@wrap off</code> 
+<LI><code>@dump #nnnn with create id=#xxxx</code> 
+</OL>
+<LI>Edit the dump you recorded. 
+<OL>
+<LI>Remove the <code>@create</code> from the first line from the first line of the dump, since you've already created the object. 
+<LI>Scan for hard-coded object numbers other than the one that is the object you created. Fix those, pointing them to the correct object on your MOO, or recoding so they're not needed. 
+<LI>Scan for things that might have inadvertently been captured along with the dump, e.g.: 
+<ul><code>
+You sense that Nern is looking for you in the Living Room: 
+Nern pages, &quot;Come out and help me torture some guests.&quot; 
+</code></ul>
+</OL>
+<LI>Upload the dump to your MOO with your client; this dump script will put the properties and verbs on the object. 
+<LI>Now, test and/or debug the object. 
+</OL>
+<P>[Thanks to Judy Anderson, for some of the nitty gritty details above; if something is in error, it is one of my ad-libs, -ed.]. </P>
+
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>I <A NAME="dumped">dumped this object</A>, but it has a few hundred properties containing object numbers from objects and players on the source MOO. How can I get rid of these? </P>
+<P>One obvious way is to edit them out of the dump with a text editor before uploading. This could cause errors and may be tedious. It might be better
+to redump the object, adding noprops to your <code>@dump</code> command. Then scan the verb code for what properties need to be on the object; add them back with <code>@prop</code>. </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>My client totally <A NAME="hashes">hashes my <code>@dump</code> script</A> when I upload it, putting in linebreaks where it shouldn't. What do I do? </P>
+<P>Check the <code>@dump</code> script file to make sure <EM>it</EM> doesn't have line breaks where it shouldn't. If it does, the problem is not with your upload but with your procedure for <code>@dump</code> (you did <code>@wrap off</code>, no?), with your client recording, or with the editor you used to scan the script; one of those
+or something else is breaking the lines. </P>
+<P>If your file is OK the problem really is with the upload: </P>
+<UL>
+    <LI>Set your client to stop this egregious behavior, or 
+    <LI>Get a better client. 
+</UL>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>How can I make all new <A NAME="playerschildren">players children</A> of a specific player class? </P>
+
+<P>Set <code>$player_class</code> equal to that class. For example, to make every new player a builder class, you'd want: </P>
+<ul><code>
+    ;$player_class = $builder 
+</code></ul>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>Why do I get a <A NAME="rangeerror">range error</A> on line 3 of <code>#15:length_date_gt</code>, which is used by commands such as <code>@subscribe</code>? </P>
+<P>You encounter this when there are no messages in <code>#18</code>, the <code>Player-Creation Log</code>. This is typical when a LambdaCore-based MOO is brand new. Change the verb to this: </P>
+<ul><code>
+    #15:length_date_gt   this none this<br>
+    if (this:ok(caller, caller_perms()))<br>
+    date = args[1];<br>
+    if (length(this.messages) &lt; 2)<br>
+      return 0;<br>
+    endif<br>
+    return this.last_msg_date &lt;= date ? 0 | this.messages[2] -<br>
+    this._mgr:find_ord(this.messages, args[1], &quot;_lt_msgdate&quot;);<br>
+    else<br>
+      return E_PERM;<br>
+    endif<br>
+</code></ul>
+<P>[Courtesy Fran Litterio via post from Pavel Curtis] </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>I've been trying to get <A NAME="@mail-options">@mail-options</A> +netmail to work on my moo and I always get this: <code>Mail sending failed: 503 Need MAIL before RCPT.</code> I then get both an emailed and <code>@mail</code> copy of the msg. What's up? </P>
+<P>This appears to be a bug in the Solaris (SunOS 5.x) sendmail daemon). Everyone may want to make the following change anyway, as it makes the MOO's sendmail routines more technically compliant with the SMTP spec. </P>
+<P>Edit <code>$network:raw_sendmail</code> and change the following (line 48): </P>
+<ul><code>
+    if (!index(&quot;23&quot;, line[1]))<br>
+</code></ul>
+<P>to: </P>
+<ul><code>
+    if (line[4] == &quot;-&quot;)<br>
+    elseif (!index(&quot;23&quot;, line[1]))<br>
+</code></ul>
+<P>[Courtesy of Alex Stewart] </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>Whats up with this <A NAME="my_huh">my_huh: security hole?</A>: </P>
+<P>A security hole in the :my_huh process (the part of <code>:huh</code> parsing which handles feature objects, in LambdaCore) has been discovered, which permits player class owners to run feature commands with their children's permissions. This is an undertandably bad hole, especially if your MOO moves functions from player classes and moves them onto features, and uses <code>caller_perms()</code> to check permissions. </P>
+<P>The permissions checks on <code>$player:my_huh</code> reads: </P>
+<ul><code>
+  if ((caller != this) &amp;&amp; (!$perm_utils:controls(caller_perms(), this)))<br>
+    &quot;Standard permissions check&quot;;<br>
+    return E_PERM;<br>
+  endif;<br>
+.. and then goes on to do a<br>
+  set_task_perms(this);<br>
+later in the verb.<br>
+</code></ul>
+<P>It is recommended to either change that if statement to remove the <code>(caller!=this)</code> check, or leave it in and changing the <code>set_task_perms()</code> to a <code>set_task_perms(caller_perms())</code>. How your MOO uses :my_huh would be the best way to tell which is the better change. </P>
+<P>[Courtesy Seth Rich] </P>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>Hey! There is always <A NAME="new">new news</A>. What's going on? </P>
+<P>Never mind. Do this as the wizard on your 1-Oct-94 core: </P>
+<ul><code>
+    ;$news:_fix_last_msg_date()<br>
+    ;$news.last_news_time=0<br>
+    ;$news:set_current_news($news.current_news)<br>
+</code></ul>
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>Hey! Where's the <A NAME="help$news">help on $news</A>? I've @examined it, but nothing works. </P>
+<P>Here is how to do it with your 1-Oct-94 core: </P>
+<P>First, find the object number for $news: </P>
+<ul><code>
+    @d $news<br>
+</code></ul>
+<P>To add new news: </P>
+<ul><code>
+    @send *news    (exactly like sending mail to any mailing list)<br>
+</code></ul>
+<P>Once you are finished composing and sending your message to *news, do: </P>
+<ul><code>
+    @mail on *news    (that'll show you what message has what number).<br>
+</code></ul>
+<P>To add that message, do: </P>
+<ul><code>
+    @addnews [number of message] to [object # of $news]<br>
+</code></ul>
+<P>If a message is old and you want it removed, do: </P>
+<ul><code>
+    @rmnews [number of message] from [object # of $news]<br>
+</code></ul>
+<P>[From posts to Moo-Cows by Seth I. Rich and Colin Moock] </P>
+
+
+<br><a href="#top">&lt;&lt; Back to Top</a><br><hr>
+<P>To <A NAME="epilog">contribute</A> to or comment on this FAQ, send email to kira@moo-cows.com; corrections, additions, attributions gratefully received. 
+</P>
+
+<P>To ask a question about MOO programming, subscribe to moo-cows (to [un]subscribe to the moo-cows mail list send email to <code>new address here soon</code> with your nice polite request in plain english). The URL to obtain this list is: </P>
+<ul><code>
+
+</code></ul>
+
+</BODY>
+</HTML>
+

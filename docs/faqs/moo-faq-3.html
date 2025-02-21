@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!-- saved from url=(0045)http://www.moo.mud.org/moo-faq/moo-faq-3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ <meta name="GENERATOR" content="LinuxDoc-Tools 0.9.21">
+ <title>MOO-Cows FAQ: Miscellaneous</title>
+ <link href="http://www.moo.mud.org/moo-faq/moo-faq-4.html" rel="next">
+ <link href="http://www.moo.mud.org/moo-faq/moo-faq-2.html" rel="previous">
+ <link href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3" rel="contents">
+</head>
+<body data-pinterest-extension-installed="cr2.0.5">
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-4.html">Next</a>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-2.html">Previous</a>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3">Contents</a>
+<hr>
+<h2><a name="s3">3.</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3">Miscellaneous</a></h2>
+
+<h2><a name="ss3.1">3.1</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3.1">Where can I find the answer to...</a>
+</h2>
+
+<p>Always try the FAQ and the MOO-Cows archives, and FAQs about other
+subjects if they apply.  Pointers to the archives and sources to get
+other forms of this FAQ are in the Resources section.  The next
+question has some pointers to UNIX resources for UNIX questions.</p>
+<p>Also look at the 
+<a href="http://www.moo.mud.org/moo-faq/lcore-getting-started.html">introduction to LambdaCore</a>
+document that comes with the latest LambdaCore.</p>
+
+<h2><a name="ss3.2">3.2</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3.2">I'm new to UNIX, and I need to ..</a>
+</h2>
+
+<p>You might be interested in reading one or more 
+<a href="http://www.faqs.org/faqs/by-newsgroup/comp/comp.unix.questions.html">comp.unix.question FAQs</a>.  Reading other
+<a href="http://www.faqs.org/faqs/by-newsgroup/comp/">http://www.faqs.org/faqs/by-newsgroup/comp/</a> 
+might give you more information about your
+particular flavor of UNIX.   Another good source of answers is
+<a href="ftp://rtfm.mit.edu/pub/">rtfm.mit.edu</a>.</p>
+
+<h2><a name="ss3.3">3.3</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3.3">I want to port something from one MOO to another.  Who do I ask for permission?</a>
+</h2>
+
+<p>The owner of the object.  If you can't get in touch with the owner
+and the object's description doesn't <b>explicitly</b> grant
+permission to port, assume you can't port the object.  If the owner of
+the object is not a real player (e.g. hacker), then contact the
+administrators of the MOO.  The 
+<a href="http://www.cis.ohio-state.edu/hypertext/faq/usenet/Copyright-FAQ/top.html">USENET Copyright FAQ</a> is a good source for information about
+copyrights.  Note that an object being on a MOO and readable by
+everyone isn't sufficient permission to port it to another MOO.
+Finally, If the object isn't a generic object, ask yourself if you
+really want to port it or if you instead want to make an original object.</p>
+
+<h2><a name="ss3.4">3.4</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3.4">What are some good clients to use with MOO?</a>
+</h2>
+
+<p>Most people prefer to use TinyFugue or the emacs client, mud.el.
+mud.el is available at
+<a href="ftp://parcftp.xerox.com/pub/MOO/clients/">PARC's FTP site</a>.</p>
+
+<p>Other clients are available at
+<a href="ftp://ftp.math.okstate.edu/pub/muds/clients">ftp://ftp.math.okstate.edu/pub/muds/clients</a></p>
+
+<p>VMS users might be interested in the port of tinyfugue 2.x by Mike Shiminok.
+It's available from 
+<a href="ftp://ftp.math.okstate.edu/pub/muds/clients/tfvms">ftp://ftp.math.okstate.edu/pub/muds/clients/tfvms</a>.</p>
+
+<p>
+<a href="http://www.awns.com/tkMOO-light/">tkMOO-light</a>
+is an advanced chat client which supports local editing,
+MacMOOSE, programmable triggers and MCP. The client uses Sun's free
+cross-platform environment Tcl/Tk
+and runs on UNIX, Windows95, Windows NT and Macintosh platforms.</p>
+
+<h2><a name="ss3.5">3.5</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3.5">How do I change my MOO password?  I've forgotten or lost the password to #2!  How do I log into my MOO?</a>
+</h2>
+
+<p>If you are using LambdaMOO 1.8.0 or later, run the MOO server in
+emergency wizard mode, eval #2.password = crypt("new-password"), and
+quit saving the database.   Once you do this, #2's password should
+be set to "new-password".
+</p><pre> unix:~&gt; moo -e yourdb.db yourdb.new
+ MOO (#2):  eval #2.password = crypt("new-password")
+ MOO (#2): quit
+</pre>
+<p></p>
+
+<p>If you are using an older version of the server and if you are
+still capable of connecting as the wizard (i.e., you either haven't
+yet given the wizard a password or you know the current one), then the
+command
+</p><pre>   @password (old-password) (new-password)
+</pre>
+
+will do it (where (old-password) is just omitted if this is the first 
+time you're giving the wizard a password).<p></p>
+
+<p>If, on the other hand, you cannot currently connect as that wizard,
+but you can connect as some other wizard, then the somewhat more
+arcane command
+</p><pre>   ;#2.password = crypt("new-password")
+</pre>
+
+will do it (where `new-password' is the new password).<p></p>
+
+<p>Finally, if you're completely locked out of all available wizard
+accounts, then you're down to the nitty-gritty task of hand-editing
+the database file.  First, while the MOO is running, connect as some
+programmer and type</p>
+<p>
+</p><pre>   ;crypt("foo")
+</pre>
+<p></p>
+
+<p>It will give you back a random-looking string.  Write it down
+<b>very</b> precisely, making sure to match case.  Then,
+bring the database file into your favorite text editor and search for
+the string ``#2'' all alone on a line.  It should be followed, on the
+next line, by the name of the wizard (probably `Wizard' if it hasn't
+been changed since the MOO was started).  Scroll down a ways (perhaps
+quite a ways, but not past the place that has `#3' all alone on a
+line) until you find another random-looking string the same length as
+the one crypt() returned above.  Replace that string with the one you
+wrote down and save the file.  You should now be able to log in as the
+wizard using the password `foo'. </p>
+
+<h2><a name="ss3.6">3.6</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3.6">How can I obtain additional copies of this list?</a>
+</h2>
+
+<p>It is available via at 
+<a href="http://www.moo.mud.org/moo-faq/">http://www.moo.mud.org/moo-faq/</a>.</p>
+
+
+<hr>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-4.html">Next</a>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-2.html">Previous</a>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc3">Contents</a>
+
+
+</body><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style></html>

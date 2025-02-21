@@ -1,0 +1,106 @@
+<html>
+
+	<head>
+		<title>cmcMOO: beginner's guide to mooing</title>
+		<link rel="stylesheet" href="../styles/style.css" type="text/css">
+	</head>
+
+	<body bgcolor="#f0ffff" link="#339999" alink="#993300" vlink="#116688">
+		<h1>Beginner's Guide to MOOing</h1>
+
+		<p>MOO (Multi-User Dimension Object Oriented) is a sophisticated computer program that allows multiple users to connect via the Internet to a shared database of rooms and other objects, and interact with each other and the database in synchronous time.</p>
+		<p>This guide is designed to get you started with MOOing. Once you have connected type '<i>help</i>' to get an index of help topics. To get specific help on communication, for example, you can type '<i>help communication</i>'. Other help materials are readily available in our Help centre where you land when you first connect. Type 'KIO' to get from the Courtyard to the Help Kiosk.</p>
+		<h2>How to Connect using telnet</h2>
+		<p>To connect to cmcMOO telnet to <a href="telnet://cmc.uib.no:8888/">cmc.uib.no:8888</a> and type: '<i>connect character-name password</i>'. If you are not a registered user type '<i>connect guest your-first-name</i>'. You can also reach Lingua by pointing your World Wide Web browser to <a href="http://lingua.utdallas.edu">http://lingua.utdallas.edu</a> and click on the option '<i>Login</i>'. Once you are connected you should immediately type '<i>help introduction</i>' '<i>help purpose</i>', and '<i>help theme</i>' for additional information, and '<i>help manners</i>' to see the code of conduct expected.<br>
+
+		<br>
+		</p>
+		<h3>A Few Basic Commands</h3>
+		<p>In the following examples we assume that your character name is 'Ann'. One of the first things you should do after you connect is to describe yourself and set your gender. You type:</p>
+		<pre>@describe me as &quot;You see a woman with long blonde hair and hazel eyes.&quot;
+&nbsp;
+@gender female
+&nbsp;</pre>
+
+		<p>To see how the room you're in looks, just type '<i>look</i>'. To get information about the objects around you, including yourself and other users, you can:</p>
+		<pre>look object | example: look guest book
+    you get the description of the object 
+&nbsp;
+examine object | example: examine guest book
+    you get the description, and additional information, like the owner of 
+    the object, and some commands to use it.
+&nbsp;</pre>
+		<h3>Moving around</h3>
+		<p>In every room exits are listed under the heading obvious exits, or if there is a map, marked by a letter code on the map itself. To move in a given direction type '<i>go direction</i>' or simply the name of the direction.</p>
+
+		<pre>go southeast | shorthand: 'southeast', or often just 'se'
+&nbsp;</pre>
+		<p>If you get lost you can always get back to where you started by typing '<i>home</i>'. A fast and convenient way to move around is to '<i>@join</i>' other users. To see who is connected type '<i>@who</i>'. If there is another user online named 'John', for example, you can join him by typing:</p>
+		<pre>@join John
+&nbsp;</pre>
+		<p>It's common courtesy to ask for permission before you join someone Type '<i>@knock John</i>'. John can now invite you to his room by typing '<i>@invite Ann</i>'.<br>
+
+		<br>
+		Every user on LinguaMOO is identified. For more information about a given user type:</p>
+		<pre>finger user | Example: finger John
+&nbsp;</pre>
+		<h3>Communicating with other people</h3>
+		<p>To communicate with people in the same room you're in, you can talk, emote, whisper or think:</p>
+		<pre>say Hello there! | shorthand: &quot;Hello there! 
+    You see: You say, &quot;Hello there!&quot;
+
+    Everyone else in the room sees: Ann says &quot;Hello there!&quot; 
+&nbsp;
+emote smiles. | shorthand: :smiles.
+    :smiles  
+    You see: Ann smiles.
+&nbsp;
+whisper &quot;Hi, John&quot; to John | shorthand: 'John hi, John
+    This is only visible to John, if he's in the same room as you.
+    If John is in a different room, the shorthand for whisper works like 
+    page (see below).  
+    You see: You whisper, &quot;Hi, John&quot; to John. 
+    John sees: Ann whispers, &quot;Hi, John&quot;
+&nbsp;
+
+think I think therefore I am. 
+    Thinking mode is visible to everyone in the same room. 
+    You see: Ann . o O ( I think therefore I am ) 
+&nbsp;</pre>
+		<p>Often when several people are in the same room, you may want to address a particular person:</p>
+		<pre>to John I agree with you. 
+    You see: Ann [to John]: I agree with you. 
+&nbsp;</pre>
+		<p>To communicate with people not in your room, you can '<i>page</i>' them:</p>
+		<pre>page John Do you have some free time?   
+    John sees: You sense that Ann is looking for you in The Courtyard
+               She pages, &quot;Do you have some free time?&quot;
+
+&nbsp;</pre>
+		<p>You can also page-emote:</p>
+		<pre>+John waves and smiles.
+    John sees: (from The Courtyard) Ann waves and smiles.
+&nbsp;</pre>
+		<h3>Miscellaneous</h3>
+		<p>If you have trouble with text running off your screen, or if you receive only the beginning of the lines, you might try the following commands:</p>
+		<pre>@wrap on          -- to make the MOO wrap the text you read
+@linelength 75    -- to set the length of your lines, in letters, to 75
+@pagelength 24    -- to set the length of your page, in lines, to 24
+@more rest/flush  -- to read/flush suspended output
+&nbsp;</pre>
+		<p>When you are in a room where many people are talking together the text you type in frequently gets interrupted and broken up by what the others in the room say. This can be very confusing. To prevent this type: 'say' and then press enter. The output from the MOO will now be suspended until you hit enter again, and you can type undisturbed.<br>
+
+		<br>
+		To log out type: @quit<br>
+		<br>
+		Finally, remember that one of the most useful help commands in MOO is this one: <i>say Hi, I'm new here. Do you have a minute for a question</i>?<br>
+		If you've been reading this guide through one of the computers in the help room at cmcMOO, you'll need to close this browser window or simply switch windows to go back to the moo.<br>
+		<small>this introduction to mooing was adapted from the guide written by the administrators at <a href="http://lingua.utdallas.edu">LinguaMOO</a>.</small>
+
+		<p>
+		<hr>
+		</p>
+	</body>
+
+</html>
+

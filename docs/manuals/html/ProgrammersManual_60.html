@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.51
+     from ProgrammersManual.texinfo on 4 March 1997 -->
+
+<TITLE>LambdaMOO Programmer's Manual - Flushing</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_59.html">previous</A>, <A HREF="ProgrammersManual_61.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H3><A NAME="SEC60" HREF="ProgrammersManual_toc.html#TOC60">Flushing Unprocessed Input</A></H3>
+
+<P>
+It sometimes happens that a user changes their mind about having typed one or
+more lines of input and would like to `untype' them before the server actually
+gets around to processing them.  If they react quickly enough, they can type
+their connection's defined <STRONG>flush</STRONG> command; when the server first reads
+that command from the network, it immediately and completely flushes any as-yet
+unprocessed input from that user, printing a message to the user describing
+just which lines of input were discarded, if any.
+
+</P>
+
+<BLOCKQUOTE>
+<P>
+<EM>Fine point:</EM> The flush command is handled very early in the server's
+processing of a line of input, before the line is entered into the task queue
+for the connection and well before it is parsed into words like other commands.
+For this reason, it must be typed exactly as it was defined, alone on the line,
+without quotation marks, and without any spaces before or after it.
+</BLOCKQUOTE>
+
+<P>
+When a connection is first accepted by the server, it is given an initial flush
+command setting taken from the current default.  This initial setting can be
+changed later using the <CODE>set_connection_option()</CODE> command.
+
+</P>
+<P>
+By default, each connection is initially given <SAMP>`.flush'</SAMP> as its flush
+command.  If the property <CODE>$server_options.default_flush_command</CODE> exists,
+then its value overrides this default.  If
+<CODE>$server_options.default_flush_command</CODE> is a non-empty string, then that
+string is the flush command for all new connections; otherwise, new connections
+are initially given no flush command at all.
+
+</P>
+<P><HR><P>
+Go to the <A HREF="ProgrammersManual_1.html">first</A>, <A HREF="ProgrammersManual_59.html">previous</A>, <A HREF="ProgrammersManual_61.html">next</A>, <A HREF="ProgrammersManual_77.html">last</A> section, <A HREF="ProgrammersManual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

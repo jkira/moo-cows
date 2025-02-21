@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!-- saved from url=(0045)http://www.moo.mud.org/moo-faq/moo-faq-1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ <meta name="GENERATOR" content="LinuxDoc-Tools 0.9.21">
+ <title>MOO-Cows FAQ: Server Related</title>
+ <link href="http://www.moo.mud.org/moo-faq/moo-faq-2.html" rel="next">
+
+ <link href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1" rel="contents">
+</head>
+<body data-pinterest-extension-installed="cr2.0.5">
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-2.html">Next</a>
+Previous
+<a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1">Contents</a>
+<hr>
+<h2><a name="s1">1.</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1">Server Related</a></h2>
+
+<h2><a name="ss1.1">1.1</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.1">What is a MOO?</a>
+</h2>
+
+<p>MOO stands for MUD, Object Oriented.  The Programmer's Manual 
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/html/ProgrammersManual_1.html#SEC1">introduction</a> describes the LambdaMOO server, which is the
+most commonly used program to run MOOs.  The 
+<a href="http://www.mudconnect.com/mudfaq/">MUD FAQ</a>
+has a definition of MUD.</p>
+
+<h2><a name="ss1.2">1.2</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.2">Who invented MOO?</a>
+</h2>
+
+<p>Stephen White (ghond) wrote the first MOO server.  Pavel
+Curtis took the basic design, language, and code, fixed bugs
+and added features to release the first LambdaMOO version.
+He maintained the server for several years.
+Erik Ostrom maintained the server for several years.
+The server is now maintained by Ben Jackson and Jay Carlson and has a
+<a href="http://sourceforge.net/projects/lambdamoo/">LambdaMOO SourceForge project</a>.</p>
+
+<h2><a name="ss1.3">1.3</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.3">What are the minimum requirements for running a MOO?</a>
+</h2>
+
+<p>The LambdaCore database is approximately 2 megabytes in size. The
+source and executable for MOO will likely occupy another 1-2 Megs. In
+its current state, MOO resides entirely in resident memory when
+running. The process size is going to be roughly 2-3 times the
+size of the database file on disk. Your mileage will vary from
+system to system.</p>
+
+<h2><a name="ss1.4">1.4</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.4">Location of LambdaMOO server source.</a>
+</h2>
+
+<p>The current LambdaMOO server source is at
+<a href="ftp://lambdamoo.sourceforge.net/pub/lambdamoo/">ftp://lambdamoo.sourceforge.net/pub/lambdamoo/</a>.</p>
+<p>The file LambdaMOO-X.Y.Z.tar.{Z,gz} (for a current server version of
+X.Y.Z) is a compressed tar file containing the complete source code,
+installation instructions, and a copy of the `Minimal' LambdaMOO
+database.</p>
+<p>MOO has been compiled and run successfully on several different
+operating systems including AIX, BSD UNIX, SunOS 4.x, Linux, Sys V R4,
+Ultrix, OSF, FreeBSD, Solaris, and NeXT.  Major MOOs are 
+currently running on almost all of them.</p>
+<p>In addition to the server, you will need a core database.  A core
+database provides functionality augmenting that of the server.  Every
+MOO needs to start from some kind of core database.  </p>
+<h2><a name="ss1.5">1.5</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.5">Location of core databases.</a>
+</h2>
+
+<p>For a long time, the only core database available was
+LambdaCore.  LambdaCore is still what most people use.</p>
+
+<p>Core databases available:</p>
+<p>
+</p><dl>
+<dt><b>LambdaCore</b></dt><dd><p>The original.  Retrieve it from 
+<a href="ftp://ftp.lambda.moo.mud.org/pub/MOO/LambdaCore-latest.db">ftp://ftp.lambda.moo.mud.org/pub/MOO/LambdaCore-latest.db</a>.  To contact
+the maintainers, send mail to *core-db-issues (if you have a
+character) or *wizard-list (as a guest) on 
+LambdaMOO 
+<a href="telnet://lambda.moo.mud.org:8888/">lambda.moo.mud.org 8888</a>.</p>
+
+</dd><dt><b>JHCore</b></dt><dd><p>A LambdaCore based db that adds significant enhancements.  It
+features a hypertext help system, administration groups, MCP fancy
+client support, enhanced English presentation tools, and lots of other
+features.  See the 
+<a href="http://jhcore.sourceforge.net/">JHCore home page</a> for more
+information about the enhancements and to download it. </p>
+
+</dd><dt><b>enCore</b></dt><dd><p>enCore is "a constructivist virtual reality environment
+designed for educational use".  More information about it and a
+place to get it is at the
+<a href="http://lingua.utdallas.edu/encore/">High Wired enCore home page</a>. </p>
+</dd></dl>
+<p></p>
+
+<h2><a name="ss1.6">1.6</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.6">Non-UNIX MOO ports.</a>
+</h2>
+
+<p>There are some non-UNIX ports of MOO, including ports to
+MacOS and Win32 (Win95/WinNT).  See the resources section for the latest list.</p>
+
+<h2><a name="ss1.7">1.7</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.7">What kind of security risk is running a MOO server?</a>
+</h2>
+
+<p>(Most of the facts for the below answer come from thread on
+MOO-Cows about this subject.  Most of the text, too.  Thanks to
+Jay Carlson (
+<a href="mailto:nop@nop.com">nop@nop.com</a>) and Ian Macintosh (
+<a href="mailto:siman@ihug.co.nz">siman@ihug.co.nz</a>).)</p>
+<p><b>Disclaimer</b>: Everything said here is an identification of a risk I
+am aware of.  I am not a security expert.  There may be other risks or
+the risks I mention below may be of other forms.  As with any other
+answer in this FAQ, I welcome submissions on this subject.</p>
+<p>One of the first things to keep in mind with computer security is
+``what are we trying to protect from whom?''.  The threat that the
+unmodified MOO server poses to the server machine is limited to denial of
+service attacks.  A MOO programmer could use all the memory, CPU, or
+disk on the partition that MOO is dumping to.  The server itself
+provides no access to the filesystem (though there are patches that
+do) or other operating system services.  </p>
+<p>If you have <code>OUTBOUND_NETWORK</code> turned on, there are a few threats
+to machines on your local net if they use some sort of ill-configured
+IP-address-based trust mechanism.  Only sites that rely on the dubious
+security of address-based trust will need to worry about this.  Your
+network admins will know if they have such an assumption built into
+your network, and can remedy this by taking your server machine out of
+the trust list.  Now that MOO can speak binary data, the number of
+services you could potentially attack through it has increased.  I
+still do not think it is a problem unless you use address-based
+authentication for things.</p>
+<p>If you have <code>OUTBOUND_NETWORK</code> turned on, your machine could
+be a threat to the Internet as a whole by laundering connections---an attacker
+connects to your server, and then connects through it to the machine
+they're <b>really</b> after, to make tracing their connections more
+difficult.  The chance of this is vanishingly small; there are far
+more convenient anonymous sites out there that are perfectly able to
+launder connections for the cracker community.</p>
+<p>By running any sort of visible and popular network service, you become
+more of a target for conventional cracking attacks.  This risk is not
+exclusive to MOO; hosting a popular web page will make it more
+attractive for people to attack you.  Depending on your level of
+visibility, you may want to tighten up general security on your
+machine or site.</p>
+<p>Some organizations have other concerns.  A MOO server may allow
+organizational mapping, or accidental disclosure of proprietary
+information, or whatever.  If you're a company that has issues like
+this, you already understand these things or have people at your site
+that do.  Go talk to them.  Feel free to ask them how the MOO server
+is more dangerous than existing communications mechanisms such as
+electronic mail or the telephone.</p>
+
+<h2><a name="ss1.8">1.8</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.8">I am having problems with my passwords on FreeBSD.  What is wrong?</a>
+</h2>
+
+<p>Modern versions of FreeBSD use a modified version of the UNIX crypt()
+function to encrypt player passwords in the MOO database.&nbsp; This
+interferes with assumptions made by MOO and by MOO databases when
+determining the 'salt' component of an encrypted password.</p>
+
+<p>A long-term solution requires modifications to the server and to the
+database, but there is a short cut available while we await changes to
+the server itself.</p>
+
+<p>Systems affected:</p>
+<p>
+</p><ul>
+<li> FreeBSD 2x and above</li>
+<li> MOO 1.8.0 and above</li>
+<li> Most MOO Core Databases</li>
+</ul>
+<p></p>
+
+<p>Symptoms:</p>
+
+<p>When you start up MOO with a fresh database you can connect as Wizard
+without needing a password.&nbsp; It's possible to use @make-player to
+create new players but you can't then connect as the new player.&nbsp; This
+is because MOO is is uncorrectly decoding the stored encrypted password
+when testing the password offered by the new connection.</p>
+
+<p>What's happening:</p>
+
+<p>The crypt() function needs a special sequece of characters called
+'salt' in order to correctly decrypt an encrypted password.&nbsp; The salt
+used to encrypt a password is stored as part of the encrypted
+password.</p>
+
+<p>On an uneffected system you can type the following eval:</p>
+<p>
+</p><pre>  ;crypt("hello")
+  =&gt; "FdaYZdZMmz1fo"
+</pre>
+<p></p>
+<p>The 'salt' in this encrypted password is in the first 2 characters 'Fd'.</p>
+<p>On a FreeBSD system the same command returns the following value:</p>
+<p>
+</p><pre> ;crypt("hello")
+ =&gt; "$1$Fd$ka83QFBdh28db22oi3if8"
+</pre>
+<p></p>
+<p>The 'salt' in this encrypted password is in positions 4..5.</p>
+
+<p>Solution:</p>
+
+<p>You need to make sure that the correct salt string is passed to calls
+you make to crypt.</p>
+
+<p>You'll need to change some of the existing database which controls
+setting and testing passwords, by extracting the correct substring from
+an encrypted password.</p>
+
+<p>At least two verbs need to be changed:</p>
+
+<p>$player:@password
+</p><pre> elseif (player.password != crypt(tostr(args[1]), player.password))
+</pre>
+
+becomes:
+<pre> elseif (player.password != crypt(tostr(args[1]), player.password[4..5]))
+</pre>
+<p></p>
+
+<p>$login:connect
+</p><pre> ... crypt({@args, ""}[2], candidate.password[1..2]) ...
+</pre>
+
+becomes:
+<pre> ... crypt({@args, ""}[2], candidate.password[4..5]) ...
+</pre>
+<p></p>
+
+<p>Redefining bf_crypt to do the right thing and changing all calls to
+crypt to pass the complete encrypted password as the 2nd parameter is
+also a good solution.</p>
+<p>Andrew Wilson (
+<a href="mailto:andrew@awns.com">andrew@awns.com</a>)</p>
+
+<h2><a name="ss1.9">1.9</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.9">When is the next release due out?</a>
+</h2>
+
+<p>It is unpredictable when each new version of the server will be
+released. The latest version of the server is 1.8.1.   It is available
+from the SourceForge site (see below).</p>
+
+<h2><a name="ss1.10">1.10</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.10">Is diskbased MOO going to be part of the next release?</a>
+</h2>
+
+<p>No.  No diskbased version of MOO is planned.</p>
+<p>(The following from a post to MOO-Cows from 
+Roger Crew (
+<a href="mailto: rfc@microsoft.com"> rfc@microsoft.com</a>).)</p>
+<p>Since most machines these days use virtual memory and disk I/O caches,
+the line between "running off the disk"
+and "running entirely in RAM" is
+rather severely blurred.  It is the fundamental nature of virtual memory
+that, once you request more memory than you physically have, you are, to
+some extent, running off the disk whether you like it or (more likely)
+not.  Conversely, a program that "runs entirely off the disk"
+may yet be running mostly in memory if its pattern of disk accesses 
+is suffiently I/O-cache-friendly (i.e., not trying to touch 
+so much of the disk at once that it blows out the cache). </p>
+<p>The real issues as I see them are:</p>
+
+<p>(1) <b>performance</b></p>
+<p>That is, what performance win is to be had by having the 
+server take more explicit control over the disk</p>
+<p>One would think that since the server has some concept of how often
+various objects/slots are used, it could implement its own swapping with
+somewhat more intelligence.</p>
+<p>Then again, given how generic the MOO language is and how much work has
+gone in over the years into OS paging algorithms and the fact that the
+OS-level stuff has a fair amount of hardware support, even having a
+server that will do as good a swapping job as the OS would have done
+will be something of a challenge.  It may be that the effort would be
+better spent restructuring the memory layout of MOO code/data so as to
+be more paging-friendly, thus working <b>with</b> what the OS has already
+provided rather than trying to reinvent/duplicate it.</p>
+<p>(2) <b>how best to achieve persistence</b></p>
+<p>The ideal here is that the state of the world should be continually
+saved in as low-overhead a manner as possible and that restoring this
+state (i.e., when your server crashes) should go as quickly as possible.</p>
+<p>I think there's a fairly strong consensus that forking every n hours to
+do a disk dump is not really the best way to do a checkpoint.  I also
+suspect that this, fast incremental checkpointing and fast
+restore/startup, is really what people are concerned about when they say
+they want a "disk-based" server.  The actual implementation that
+achieves this is immaterial.</p>
+
+<h2><a name="ss1.11">1.11</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.11">Why won't my MOO send email with new character's passwords?</a>
+</h2>
+
+<p>Using outbound mail requires that the moo be able to open up
+network connections.  This is a compile time option in the options.h
+file.  There is a line that looks like this:</p>
+<p>
+</p><pre>  /* #define OUTBOUND_NETWORK */
+</pre>
+<p></p>
+
+
+<p>/* and */ are C comment markers so define is commented out.  If the MOO
+server is compiled without OUTBOUND_NETWORK being defined, then calls
+to open_network_connection() will fail with E_PERM.  Since outbound mail
+depends on open_network_connection(), outbound mail doesn't work without 
+OUTBOUND_NETWORK.</p>
+
+<p>To enable outbound network connections, recompile the MOO server
+after editing options.h so it includes the line:</p>
+<p>
+</p><pre>  #define OUTBOUND_NETWORK
+</pre>
+<p></p>
+
+<p>See also help open_network_connection() in LambdaCore for more
+information on open_network_connection and the README file in
+the MOO distribution for more info on compiling the MOO.  It is a good idea
+to look over options.h as there are several important options set there.</p>
+<p>Andy Bakun (
+<a href="mailto:abakun@rci.ripco.com">abakun@rci.ripco.com</a>)</p>
+
+
+<h2><a name="ss1.12">1.12</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.12">How does the MOO pass arguments to builtin functions?</a>
+</h2>
+
+<p>The argument list is represented in the same way as all MOO values;
+in this case, it is a MOO list containing all of the arguments passed
+to the built-in function by the MOO programmer.  First, I'll describe
+MOO value representation in general; after that I'll get back to
+built-in function argument lists in particular.</p>
+
+<p>MOO values are represented by C structures of type `Var'.  There
+are two members of such a structure, the `type' and the value, `v'.
+The `type' member is one of TYPE_NUM, TYPE_OBJ, TYPE_ERR, TYPE_STR, or
+TYPE_LIST.</p>
+
+<p>This type corresponds exactly to the MOO programmer's idea of the
+standard five MOO data types.  The particular `type' value used in
+each instance determines the form of the `v' or value member of the
+structure; `v' is a union of a number of different representations,
+one for each type.</p>
+
+<p>If x.type == TYPE_NUM, then x represents a MOO number, the value of
+which is found in x.v.num (a C integer).  The TYPE_OBJ and TYPE_ERR
+cases are handled similarly, representing MOO object numbers and error
+codes; their respective values are found in x.v.obj (a C integer) and
+x.v.err (an element of the C enumeration type `enum error').</p>
+
+<p>If x.type == TYPE_STR, then x represents a MOO string, the
+characters of which are found in x.v.str (a C `const char *' value).
+NOTE the use of `const' here.  You should never modify a MOO string
+value, since all MOO values are immutable and you can't easily tell if
+maybe some other part of the MOO is also holding onto a pointer to
+that string.  Instead, use `str_dup()' to make a copy of the string
+and modify that instead.</p>
+
+<p>If x.type == TYPE_LIST, then x represents a MOO list value, the
+most complicated case; the value part of x is found in x.v.list (a C
+`Var *' value, a pointer to an array of Var structures).  The first
+(zeroth) element of x.v.list always has type TYPE_NUM (i.e.,
+x.v.list[0].type == TYPE_NUM); its value (i.e., x.v.list[0].v.num) is
+the length of the list (and also one less than the length of the
+x.v.list array).  The rest of the elements of the list are in the
+succeeding elements of the x.v.list array, in the same order as in the
+MOO list.  For example, if x represented the MOO list value {17, #3},
+then all of the following would be true:</p>
+<p>
+</p><pre>        x.type == TYPE_LIST             /* x represents a list */
+        x.v.list[0].type == TYPE_NUM    /* the zeroth elt is the list length */
+        x.v.list[0].v.num == 2
+        x.v.list[1].type == TYPE_NUM    /* the first elt of the MOO list: 17 */
+        x.v.list[1].v.num == 17
+        x.v.list[2].type == TYPE_OBJ    /* the second elt of the list: #3 */
+        x.v.list[2].v.obj == 3
+</pre>
+<p></p>
+
+<p>Brand new list values are *always* allocated using the C function
+`new_list()'.  The other kinds are always created manually, using a
+local C variable of type Var and filling in the members one by one.
+Even for lists, only the actual allocation and setting up of the
+length field are done by `new_list()'; filling in the elements is done
+manually.</p>
+
+<p>A new reference to any existing MOO value can be created with
+`var_ref()' and a top-level copy can be made with `var_dup()'; an
+existing reference can be discarded by calling `free_var()'.</p>
+
+<p>Getting back to built-in function argument lists now, they are
+simply normal MOO lists, containing just exactly the arguments passed
+by the MOO programmer.  </p>
+<p>Pavel Curtis (
+<a href="mailto:pavel@parc.xerox.com">pavel@parc.xerox.com</a>)</p>
+
+<h2><a name="ss1.13">1.13</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.13">Why does MOO compilation fail on Linux with an ``undefined reference to sqrt''?</a>
+</h2>
+
+<p>Because it can't find sqrt.</p>
+<p>You need to edit the MOO Makefile so you link with -lm.  Add -lm to
+the LIBRARIES line in the Makefile.</p>
+
+<h2><a name="ss1.14">1.14</a> <a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1.14">How does the MOO pick a verb to run when someone types a command?</a>
+</h2>
+
+<p>See the LambdaMOO Programmer's Manual: 
+<a href="ftp://ftp.research.att.com/dist/eostrom/MOO/html/ProgrammersManual_8.html#SEC8">The Built-in Command Parser</a>.</p>
+
+<hr>
+<a href="http://www.moo.mud.org/moo-faq/moo-faq-2.html">Next</a>
+Previous
+<a href="http://www.moo.mud.org/moo-faq/moo-faq.html#toc1">Contents</a>
+
+
+</body><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style></html>
